@@ -1,7 +1,8 @@
 import QRCode from "qrcode";
 import { WeatherData, VerifiedDocument } from "../types";
 
-const API_BASE_URL = "/api";
+// Use the Vercel env variable in production, or fallback to the Vite proxy in development
+const API_BASE_URL = import.meta.env.VITE_API_URL || "/api";
 
 export async function fetchLiveWeather(lat = 12.9716, lng = 77.5946, city = "Bengaluru"): Promise<WeatherData> {
   try {
